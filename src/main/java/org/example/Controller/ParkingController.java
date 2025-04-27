@@ -31,4 +31,14 @@ public class ParkingController {
     public void delete(@PathVariable String id) {
         repository.deleteById(id);
     }
+
+    @GetMapping("/search")
+    public List<Parking> search(@RequestParam String location) {
+        return repository.searchByLocation(location);
+    }
+
+    @GetMapping("/exactSearch")
+    public List<Parking> exactSearch(@RequestParam String location) {
+        return repository.findByLocationExact(location);
+    }
 }
